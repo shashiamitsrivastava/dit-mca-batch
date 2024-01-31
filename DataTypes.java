@@ -1,5 +1,12 @@
 public class DataTypes {
-     static public void main(String []a) {
+    // 
+    static void show(int ...z){
+
+    }
+     static public void main(String ...a) {
+        show();
+        show(10,20);
+        show(10,20,30);
             // Primitive/ Primary / Value Type/ Immutable Type
             int e = 100;
             System.out.println(e+1);
