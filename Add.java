@@ -1,21 +1,23 @@
 public class Add {
-    public static void main(){
-        System.out.println("No Args Main");
-    }
-    public static void main(int x){
-        System.out.println("int main");
-    }
-    public static void main(String ...args) {
-        main();
-        main(10);
+    public static void main(String[] args) {
         int sum = 0;
-        for(int i = 0 ; i<args.length; i++){
+        for(int i = 0; i<args.length; i++){
             sum = sum + Integer.parseInt(args[i]);
         }
-        System.out.println("Sum is "+sum);
+        System.out.println("Result is "+sum);
+        // Command Line Arguments
+        // String firstName = args[0];
+        // String lastName = args[1];
+        // System.out.println(firstName + lastName);
+        // if(args.length==2){
+        // int firstNumber = Integer.parseInt(args[0]);
+        // int secondNumber = Integer.parseInt(args[1]);
+        // int result = firstNumber + secondNumber;
+        // System.out.println(result);
+        // }
+        // else{
+        //     System.out.println("Invalid Number of Args");
+        // }
+
     }
 }
-// Add "10" "20" "30"
-// Add 10 20 30 40 50
-// Add 10
-// Add 
