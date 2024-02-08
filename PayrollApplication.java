@@ -1,9 +1,17 @@
 
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.util.Date;
 import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 class PayrollApplication{
-
+    static ResourceBundle rb;
+    static Locale locale; // Member of a class (Class Member Variable) - Bind with a Class
+    static void loadBundle(){
+        rb = ResourceBundle.getBundle("message", locale);
+    }
     static String properCase(String name){
         // rAm KuMaR sHarMA
         // names[0] = rAm
@@ -27,15 +35,29 @@ class PayrollApplication{
         }
         return fullName;
     }
+    static String currencyFormat(double val){
+        // 10000.0
+        // $10,000 - String
+        NumberFormat obj = NumberFormat.getCurrencyInstance(locale);
+        return obj.format(val);
+    }
+    static String dateFormat(){
+        // System Date 
+        Date date = new Date();
+       // System.out.println(date);
+        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, locale);
+        return df.format(date);
+    }
     // SRP 
     static void input(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Press 1 for English");
         System.out.println("हिंदी के लिए 2 दबाएँ");
         int choice = scanner.nextInt();
-        Locale locale;
+        
         if(choice == 1){
             locale = new Locale("en","US");
+        
         }
         else if(choice ==2){
             locale =new Locale("hi", "IN");
@@ -44,13 +66,14 @@ class PayrollApplication{
             locale = new Locale("en","US");
             System.out.println("Wrong Choice... Taking English as Default");
         }
-        System.out.println("Enter the Id");
+        loadBundle();
+        System.out.println(rb.getString("id.msg"));
         int id = scanner.nextInt();
         
         scanner.nextLine(); // eat \n
-        System.out.println("Enter the Name");
+        System.out.println(rb.getString("name.msg"));
         String name= scanner.nextLine();
-        System.out.println("Enter the Basic Salary");
+        System.out.println(rb.getString("salary.msg"));
         double basicSalary = scanner.nextDouble();
         compute(name, basicSalary);
         scanner.close();
@@ -81,15 +104,16 @@ class PayrollApplication{
         return 0.0;
     }
     static void print(String name , double gs, double hra, double ta, double ma, double da, double pf, double tax, double ns){
+       System.out.println(rb.getString("date.msg")+dateFormat());
         System.out.println("Emp Name "+properCase(name));
-        System.out.println("Earning Allowances  \t Deduction");
-        System.out.println("Hra "+hra+"\t\t PF "+pf);
-        System.out.println("DA  "+da+"\t\t Tax "+tax);
-        System.out.println("MA  "+ma);
-        System.out.println("TA  "+ta);
-        System.out.println("GS "+gs);
+        System.out.println( rb.getString("allowances.msg")+" \t Deduction");
+        System.out.println("Hra "+currencyFormat(hra)+"\t\t PF "+currencyFormat(pf));
+        System.out.println("DA  "+currencyFormat(da)+"\t\t Tax "+currencyFormat(tax));
+        System.out.println("MA  "+currencyFormat(ma));
+        System.out.println("TA  "+currencyFormat(ta));
+        System.out.println("GS "+currencyFormat(gs));
        
-        System.out.println("NS "+ns);
+        System.out.println("NS "+currencyFormat(ns));
         
     }
 
