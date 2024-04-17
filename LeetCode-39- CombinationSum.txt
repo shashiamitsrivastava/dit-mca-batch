@@ -1,0 +1,27 @@
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+       List<Integer> smallList = new ArrayList<>();
+       List<List<Integer>> bigList = new ArrayList<>();
+        helper(candidates, 0, target, smallList, bigList);
+        return bigList;
+    }
+    void helper(int nums[], int index, int target, 
+    List<Integer> smallList,List<List<Integer>> bigList){
+        // Base Case
+        if(target == 0){
+            bigList.add(new ArrayList<Integer>(smallList));
+            return ;
+        }
+        if(target<0){
+            return ;
+        }
+        for(int i = index; i<nums.length; i++){
+            smallList.add(nums[i]); // add smallList
+            // recursive call
+            helper(nums, i,
+             target - nums[i], smallList, bigList);
+             // Stack Fall
+             smallList.remove(smallList.size()-1);
+        }
+    }
+}
