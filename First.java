@@ -1,46 +1,23 @@
-/**
- * Doc (javadoc)
- */
-/*
- * Comment
- */
-// Java - OOP
-// Pascal Case
-class _A{
+class First{
+    static void show(int []a){
+        a[0] = 100;
+        for(int i : a){
+            System.out.println(i);
+        }
+    }
+    public static void main(String[] args) {
+        //int arr[] = new int[3]; // all are fill with 0
+        // {0,0,0}
+        //int []arr = new int[3];
+        //int [] arr = {10,20,30};
+        int [] arr = new int[]{10,20,30};
+        show(arr);
+        System.out.println("After Show Call ");
+        for(int i : arr){
+            System.out.println(i);
+        }
 
-}
-// A$B
-class A{
-    class B{
 
     }
-}
-class $A{
 
 }
- class Second{
-    public static void main(String args[]){
-        //String account_name = "SA";
-        String accountName  = "SA";
-
-        int bankBalance = 1000; // camelCase
-        final int MAX_POWER =100; // All Caps
-        var e= 100.20;
-       // e = "Hello";
-        var b = 100; // Type Inference (Implicit way)
-        // Explicit Way
-        int a; // Local Variable (it need to be initalize)
-        a = 10;
-        System.out.println(a);
-       // System s = new System();
-        System.out.println("Hello Java");
-        //System.out.print();
-    }
-}
-/*
- * class System{
- *  in
- * out 
- * err
- * }
- */
